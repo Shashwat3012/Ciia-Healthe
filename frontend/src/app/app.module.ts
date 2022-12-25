@@ -26,6 +26,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list'; 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -53,7 +56,8 @@ const routes: Routes = [
     ViewPatientInfoDetails,
     PatientInfoByDisease,
     NomineeDashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,9 @@ const routes: Routes = [
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }, UserService
