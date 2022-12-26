@@ -6,19 +6,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { HomeComponent, PatientInfoDialog, ViewPatientInfoDetails } from './home/home.component';
+import {
+  HomeComponent,
+  PatientInfoDialog,
+  ViewPatientInfoDetails,
+} from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DoctorDashboardComponent, DoctorRequestDialog, MaskedDetails, PatientInfoByDisease, PatientInfoDetails } from './doctor-dashboard/doctor-dashboard.component';
+import {
+  DoctorDashboardComponent,
+  DoctorRequestDialog,
+  MaskedDetails,
+  PatientInfoByDisease,
+  PatientInfoDetails,
+} from './doctor-dashboard/doctor-dashboard.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
@@ -27,8 +40,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list'; 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { LayoutComponent } from './layout/layout.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MedicationComponent } from './medication/medication.component';
+import { AllergiesComponent } from './allergies/allergies.component';
+import { InjuryHistoryComponent } from './injury-history/injury-history.component';
+import { OtherReportsComponent } from './other-reports/other-reports.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,7 +57,12 @@ const routes: Routes = [
   //{ path: 'second-component', component: SecondComponent },
   { path: 'doctor-dashboard', component: DoctorDashboardComponent },
   { path: 'nominee-dashboard', component: NomineeDashboardComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent }
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'medication', component: MedicationComponent },
+  { path: 'allergies', component: AllergiesComponent },
+  { path: 'injury-history', component: InjuryHistoryComponent },
+  { path: 'other-reports', component: OtherReportsComponent },
 ];
 
 @NgModule({
@@ -57,7 +81,13 @@ const routes: Routes = [
     PatientInfoByDisease,
     NomineeDashboardComponent,
     AdminDashboardComponent,
-    SidenavComponent
+    SidenavComponent,
+    LayoutComponent,
+    ProfileComponent,
+    MedicationComponent,
+    AllergiesComponent,
+    InjuryHistoryComponent,
+    OtherReportsComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,11 +110,15 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }, UserService
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { floatLabel: 'auto' },
+    },
+    UserService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

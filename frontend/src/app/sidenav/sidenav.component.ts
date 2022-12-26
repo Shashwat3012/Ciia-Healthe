@@ -11,7 +11,9 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  setflag(){
 
+  }
 }
 
-export class SidenavDrawerOverviewExample {}
+// export class SidenavDrawerOverviewExample {}
