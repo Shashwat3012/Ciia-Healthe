@@ -79,8 +79,8 @@ public class UserServiceImpl implements User{
     @Override
     public String saveUser(PatientInfoRequest patientInfo) {
         patientRepo.save(new PatientInfo(patientInfo.getPatientName(),patientInfo.getPatientId(),patientInfo.getDOB(),
-                patientInfo.getHeight(),patientInfo.getWeight(),patientInfo.getAllergies(),patientInfo.getMedication(),
-                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getInjuryHistory(),patientInfo.getNominee1Name(),
+                patientInfo.getHeight(),patientInfo.getWeight(),
+                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getNominee1Name(),
                 patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),patientInfo.getNominee2Contact()));
         return "Submitted Successfully";
     }
@@ -103,11 +103,8 @@ public class UserServiceImpl implements User{
                 patientList.getDOB(),
                 patientList.getHeight(),
                 patientList.getWeight(),
-                patientList.getAllergies(),
-                patientList.getMedication(),
                 patientList.getDisease(),
                 patientList.getBloodGroup(),
-                patientList.getInjuryHistory(),
                 patientList.getNominee1Name(),
                 patientList.getNominee1Contact(),
                 patientList.getNominee2Name(),
@@ -130,8 +127,8 @@ public class UserServiceImpl implements User{
     @Override
     public String editUser(PatientInfoRequest patientInfo) {
         patientRepo.updatePatientInfo(patientInfo.getPatientId(),patientInfo.getHeight(),
-                patientInfo.getWeight(),patientInfo.getAllergies(),patientInfo.getMedication(),
-                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getInjuryHistory(),
+                patientInfo.getWeight(),
+                patientInfo.getDisease(),patientInfo.getBloodGroup(),
                 patientInfo.getNominee1Name(),patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),
                 patientInfo.getNominee2Contact());
         return "Submitted Successfully";
@@ -148,11 +145,8 @@ public class UserServiceImpl implements User{
                     patientObject.getDOB(),
                     patientObject.getHeight(),
                     patientObject.getWeight(),
-                    patientObject.getAllergies(),
-                    patientObject.getMedication(),
                     patientObject.getDisease(),
                     patientObject.getBloodGroup(),
-                    patientObject.getInjuryHistory(),
                     patientObject.getNominee1Name(),
                     patientObject.getNominee1Contact(),
                     patientObject.getNominee2Name(),
