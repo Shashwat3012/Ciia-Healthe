@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+<div>
+      <mat-icon mat-fab style="float:left;height:60px;width:60px;font-size: 3rem;cursor:pointer;"
+        matTooltip="Register New User" matTooltipPosition="left" (click)="register()">note_add</mat-icon>
+</div> 
+<div>
+    <form [formGroup]="form" class="formClass" style="top:0px">
+        <mat-form-field appearance="outline">
+            <mat-label >Search Patient</mat-label>
+            <input matInput formControlName="patientId">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field> &nbsp;
+    </form>
+</div>
+<!-- <div>
+    <mat-icon mat-fab style="float:right;height:60px;width:60px;font-size: 3rem;cursor:pointer;"
+        matTooltip="Request Data" matTooltipPosition="left" (click)="openDialog()">note_add</mat-icon>
+</div>
+
+<div>
+    <form [formGroup]="form" class="formClass">
+        <mat-form-field appearance="outline">
+            <mat-label>Search Patient</mat-label>
+            <input matInput formControlName="patientId">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field> &nbsp;
+    </form> -->
+
+<div style="margin-top: 2%;margin-left: 10%;" >
+    <button mat-raised-button class="button" (click)="viewPatientData11()" style="cursor:pointer; font-size: 15px;">Search By
+        Id</button>
+</div>
+

@@ -56,7 +56,7 @@ export class UserService {
     }
 
     updateDoctorUser(request: any): Observable<any> {
-        return this.http.post('http://localhost:8080/updateDoctorUser', request, { ...this.httpOptions, responseType: 'text' })
+        return this.http.post('http://localhost:8080/updateRequestStatus', request, { ...this.httpOptions, responseType: 'text' })
     }
 
     fetchAllDoctors(): Observable<any> {

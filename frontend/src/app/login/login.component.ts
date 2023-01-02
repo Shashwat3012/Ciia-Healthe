@@ -88,4 +88,17 @@ export class LoginComponent implements OnInit {
   register() {
     this.router.navigate(['/register']);
   }
+
+  hospital(){
+    this._snackBar.open("Login Successful", "Close", {
+      duration: 1500,
+    });
+    sessionStorage.setItem("role", "Hospital");
+    this.router.navigate(['/hospital']);
+  }
 }
+
+
+
+
+

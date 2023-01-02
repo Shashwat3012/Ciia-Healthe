@@ -26,6 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HospitalComponent, ViewPatientInfoDetails11 } from './hospital/hospital.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   //{ path: 'second-component', component: SecondComponent },
   { path: 'doctor-dashboard', component: DoctorDashboardComponent },
   { path: 'nominee-dashboard', component: NomineeDashboardComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent }
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  {path: 'hospital', component: HospitalComponent}
 ];
 
 @NgModule({
@@ -53,7 +55,9 @@ const routes: Routes = [
     ViewPatientInfoDetails,
     PatientInfoByDisease,
     NomineeDashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    HospitalComponent,
+    ViewPatientInfoDetails11
   ],
   imports: [
     BrowserModule,
