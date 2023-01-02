@@ -23,4 +23,19 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
+  profileMethod(str:string){
+    if(str == 'medication'){
+      this.router.navigate(['/medication']);
+    }
+    if(str == 'allergies'){
+      this.router.navigate(['/allergies']);
+    }
+    if(str == 'injury-history'){
+      this.router.navigate(['/injury-history']);
+    }
+    if(str == 'other-reports'){
+      this.router.navigate(['/other-reports']);
+    }
+  }
+
 }

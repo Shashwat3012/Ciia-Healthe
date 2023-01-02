@@ -52,7 +52,6 @@ public class UserController {
         } catch(Exception e){
             throw e;
         }
-
     }
 
     @GetMapping("/getRequestsByDoctor")
@@ -95,7 +94,6 @@ public class UserController {
         } catch(Exception e){
             throw e;
         }
-
     }
 
 }

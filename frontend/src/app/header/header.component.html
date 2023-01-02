@@ -10,10 +10,31 @@
             <span class="example-spacer"></span>
             <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="menu">account_circle
             </mat-icon>
+            <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;">home</mat-icon>
+            <mat-icon *ngIf="role == 'Patient'" style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="profile">account_box</mat-icon>
+            <span class="example-spacer"></span>
+            <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="menu">account_circle</mat-icon>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="logout()">
                     <mat-icon>power_settings_new</mat-icon>Logout
                 </button>
+            </mat-menu>
+            <mat-menu #profile="matMenu">
+                <button mat-menu-item (click)="profileMethod('medication')">
+                    <mat-icon>local_hospital</mat-icon>Medication
+                </button>
+                <button mat-menu-item (click)="profileMethod('allergies')">
+                    <mat-icon>bug_report</mat-icon>Allergies
+                </button>
+                <button mat-menu-item (click)="profileMethod('injury-history')">
+                    <mat-icon>accessible</mat-icon>Injury History
+                </button>
+                <button mat-menu-item (click)="profileMethod('other-reports')">
+                    <mat-icon>insert_drive_file</mat-icon>Other Reports
+                </button>
+                <!-- <mat-menu-item>
+                    <mat-icon (click)="profile()">power_settings_new</mat-icon>Medication
+                </mat-menu-item> -->
             </mat-menu>
         </mat-toolbar>
     </mat-card>

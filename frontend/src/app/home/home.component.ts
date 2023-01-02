@@ -6,7 +6,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
 
 export interface RequestData {
   requestId: string;
@@ -219,31 +218,3 @@ export class PatientInfoDialog implements OnInit {
   }
 
 }
-// @Component({
-//   selector: 'app-hospital',
-//   templateUrl: './hospital.component.html',
-//   styleUrls: ['./hospital.component.css']
-// })
-// export class HospitalComponent implements OnInit {
-  
-
-//   constructor(private dialog: MatDialog, private router: Router, private userService: UserService, 
-//     private _snackBar: MatSnackBar) { }
-//   form: FormGroup = new FormGroup({
-//     patientId: new FormControl(''),
-//   });
-
-//   ngOnInit(): void {
-//   }
-
-
-
-// register(){
-//   this._snackBar.open("Register as a new user", "Close", {
-//     duration: 1500,
-//   });
-//   this.router.navigate(['/register']);
-// }
-
-// }
-

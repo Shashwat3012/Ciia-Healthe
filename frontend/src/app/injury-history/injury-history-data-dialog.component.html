@@ -1,0 +1,46 @@
+<div>
+    <form [formGroup]="form" class="formClass">
+        <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
+            <mat-label>Injury</mat-label>
+            <!-- <input matInput formControlName="allergies"> -->
+            <textarea matInput formControlName="injury"></textarea>
+            <mat-icon matSuffix>accessible</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
+            <mat-label>Date</mat-label>
+            <!-- <input matInput formControlName="diseases"> -->
+            <input type="date" matInput formControlName="date">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
+            <mat-label>File</mat-label>
+            <!-- <input matInput formControlName="injuryhistory"> -->
+            <textarea matInput formControlName="file"></textarea>
+            <mat-icon matSuffix> insert_drive_file</mat-icon>
+        </mat-form-field>
+
+        <div style="display: flex;flex-direction: column;">
+            <div style="margin-left: 38%;">
+                <button mat-raised-button class="button" (click)="submit()">Submit</button> &nbsp;&nbsp;
+                <button mat-raised-button class="button" (click)="close()">Close</button>
+            </div>
+        </div>
+
+        <!-- <div class="text-center">
+            <input class="form-control" type="file" (change)="onChange($event)">
+            <button (click)="onUpload()"class="btn btn-success">Upload</button>
+        </div>
+        
+        <-- Shareable short link of uploaded file -->
+        <!-- <div class="container text-center jumbotron"
+            *ngIf="shortLink">
+            <h2> Visit Here</h2>
+            <a href="{{shortLink}}">{{shortLink}}</a>
+        </div> -->
+        
+        <!--Flag variable is used here-->
+        <!-- <div class="container" *ngIf="loading">
+            <h3>Loading ...</h3>
+        </div> -->
+        
+    </form>
+</div>
