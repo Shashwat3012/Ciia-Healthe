@@ -1,0 +1,21 @@
+.example-container {
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid rgb(10, 10, 10);
+}
+mat-sidenav-container {
+    height: 100vh;
+    background-color: white;
+    
+      }
+    
+      mat-sidenav, mat-sidenav-content {
+        padding: 16px;
+    
+      }
+    
+      mat-sidenav {
+        background-color: black;
+        width: 300px;
+      }
