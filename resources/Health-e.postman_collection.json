@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "0e17bbc5-30cd-4b6e-b90a-2058a52e1186",
+		"name": "Health-e",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5129787"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"\",\r\n    \"license\": \"\",\r\n    \"hospital\": \"\",\r\n    \"status\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Patient Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getRequests?patientId=1bb37d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getRequests"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "1bb37d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"\",\r\n    \"role\": \"\",\r\n    \"password\":\"\",\r\n    \"patientId\":\"\",\r\n    \"nomineeName\": \"\",\r\n    \"license\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update doctor user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctorId\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateDoctorUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateDoctorUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Patient Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientName\":\"\",\r\n    \"patientId\":\"\",\r\n    \"dob\":\"\",\r\n    \"height\":\"\",\r\n    \"weight\":\"\",\r\n    \"allergies\":\"\",\r\n    \"medication\":\"\",\r\n    \"disease\":\"\",\r\n    \"bloodGroup\":\"\",\r\n    \"injuryHistory\":\"\",\r\n    \"nominee1Name\":\"\",\r\n    \"nominee1Contact\":\"\",\r\n    \"nominee2Name\":\"\",\r\n    \"nominee2Contact\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/savePatientData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"savePatientData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Patient Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientName\":\"\",\r\n    \"patientId\":\"\",\r\n    \"dob\":\"\",\r\n    \"height\":\"\",\r\n    \"weight\":\"\",\r\n    \"allergies\":\"\",\r\n    \"medication\":\"\",\r\n    \"disease\":\"\",\r\n    \"bloodGroup\":\"\",\r\n    \"injuryHistory\":\"\",\r\n    \"nominee1Name\":\"\",\r\n    \"nominee1Contact\":\"\",\r\n    \"nominee2Name\":\"\",\r\n    \"nominee2Contact\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/editPatientData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"editPatientData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Patient Info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"patientId\":\"\",\r\n    \"reason\":\"\",\r\n    \"doctorId\":\"\",\r\n    \"date\":\"\",\r\n    \"status\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/requestPatientInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"requestPatientInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getRequests?patientId=1bb37d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getRequests"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "1bb37d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Requests by Doctor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getRequestsByDoctor?doctorId=1bb37e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getRequestsByDoctor"
+					],
+					"query": [
+						{
+							"key": "doctorId",
+							"value": "1bb37e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/patientInfo?patientId=1bb37d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patientInfo"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "1bb37d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Info by Disease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/patientInfoByDisease?disease=diabetes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patientInfoByDisease"
+					],
+					"query": [
+						{
+							"key": "disease",
+							"value": "diabetes"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All Doctors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fetchAllDoctors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fetchAllDoctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Request Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestId\":\"\",\r\n    \"status\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateRequestStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateRequestStatus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

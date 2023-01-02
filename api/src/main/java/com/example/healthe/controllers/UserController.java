@@ -41,15 +41,15 @@ public class UserController {
 
 
     @PostMapping("/requestPatientInfo")
-    public String requestPatientInfo(@RequestBody DoctorRequest doctorRequest){
+    public String requestPatientInfo(@RequestBody DoctorRequest doctorRequest) {
         return userService.requestData(doctorRequest);
     }
 
     @GetMapping("/getRequests")
     public List<com.example.healthe.entity.DoctorRequest> getRequests(@RequestParam String patientId) throws InterruptedException {
-        try{
+        try {
             return userService.getRequestsForPatient(patientId);
-        } catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
 
@@ -57,9 +57,9 @@ public class UserController {
 
     @GetMapping("/getRequestsByDoctor")
     public List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(@RequestParam String doctorId) throws InterruptedException {
-        try{
+        try {
             return userService.getRequestsByDoctor(doctorId);
-        } catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
 
@@ -67,35 +67,36 @@ public class UserController {
 
     @GetMapping("/patientInfo")
     public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
-        try{
+        try {
             return userService.getPatientInfo(patientId);
-        } catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
     }
 
     @GetMapping("/patientInfoByDisease")
     public ArrayList<PatientInfoRequest> getPatientInfoByDisease(@RequestParam String disease) throws InterruptedException {
-        try{
+        try {
             return userService.getPatientInfoByDisease(disease);
-        } catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
     }
 
     @PostMapping("/updateRequestStatus")
-    public String updateRequestStatus(@RequestBody UpdateDoctorRequest docRequest){
+    public String updateRequestStatus(@RequestBody UpdateDoctorRequest docRequest) {
         return userService.updateRequestStatus(docRequest);
     }
 
     @GetMapping("/fetchAllDoctors")
     public List<com.example.healthe.entity.DoctorInfo> fetchAllDoctors() throws InterruptedException {
-        try{
+        try {
             return userService.fetchAllDoctors();
-        } catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
 
     }
 
 }
+
