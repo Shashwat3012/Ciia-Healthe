@@ -27,6 +27,14 @@ export class UserService {
         return this.http.post('http://localhost:8080/editPatientData', user, { ...this.httpOptions, responseType: 'text' })
     }
 
+    submitMedicationData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/saveMedicationData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    editMedicationData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/editMedicationData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
     requestData(request: any): Observable<any> {
         return this.http.post('http://localhost:8080/requestPatientInfo', request, { ...this.httpOptions, responseType: 'text' })
     }
@@ -34,6 +42,11 @@ export class UserService {
     fetchPatient(patientId: string): Observable<any> {
         let queryParams = new HttpParams().append("patientId", patientId);
         return this.http.get('http://localhost:8080/patientInfo', { ...this.httpOptions, params: queryParams })
+    }
+
+    fetchMedication(patientId: string): Observable<any> {
+        let queryParams = new HttpParams().append("patientId", patientId);
+        return this.http.get('http://localhost:8080/medicationData', { ...this.httpOptions, params: queryParams })
     }
 
     fetchPatientByDisease(disease: string): Observable<any> {
@@ -44,6 +57,11 @@ export class UserService {
     fetchPatientRequests(patientId: string): Observable<any> {
         let queryParams = new HttpParams().append("patientId", patientId);
         return this.http.get('http://localhost:8080/getRequests', { ...this.httpOptions, params: queryParams })
+    }
+
+    getMedicationData(patientId: string): Observable<any> {
+        let queryParams = new HttpParams().append("patientId", patientId);
+        return this.http.get('http://localhost:8080/medicationData', { ...this.httpOptions, params: queryParams })
     }
 
     updateRequestStatus(request: any): Observable<any> {

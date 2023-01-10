@@ -13,9 +13,25 @@ public interface User {
 
     String saveUser(PatientInfoRequest patientInfo);
 
+    String saveMedData(MedicationRequest medicationRequest);
+
+    String saveAllergData(AllergiesRequest allergiesRequest);
+
+    String saveInjuryData(InjuryHistoryRequest injuryRequest);
+
+    String saveFileData(FileRequest fileRequest);
+
     String requestData(DoctorRequest doctorRequest);
 
     PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException;
+
+    ArrayList<MedicationRequest> getMedicationData(String patientId) throws InterruptedException;
+
+    AllergiesRequest getAllergiesData(String patientId) throws InterruptedException;
+
+    InjuryHistoryRequest getInjuryData(String patientId) throws InterruptedException;
+
+    FileRequest getFileData(String patientId) throws InterruptedException;
 
     List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId);
 
@@ -24,6 +40,14 @@ public interface User {
     List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId);
 
     String editUser(PatientInfoRequest patientInfo);
+
+    String editMedData(MedicationRequest medicationRequest);
+
+    String editAllergData(AllergiesRequest allergiesRequest);
+
+    String editInjuryData(InjuryHistoryRequest injuryHistoryRequest);
+
+    String editFileData(FileRequest fileRequest);
 
     ArrayList<PatientInfoRequest> getPatientInfoByDisease(String disease);
 

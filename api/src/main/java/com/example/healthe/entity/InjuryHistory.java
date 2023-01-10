@@ -1,6 +1,5 @@
 package com.example.healthe.entity;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
 @Entity
@@ -22,7 +21,7 @@ public class InjuryHistory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public InjuryHistory(String injury, String date, String reports, String patientId, long id) {
+    public InjuryHistory(String injury, String date, String reports, String patientId) {
         this.injury = injury;
         this.date = date;
         this.reports = reports;

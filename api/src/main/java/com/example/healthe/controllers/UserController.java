@@ -39,6 +39,49 @@ public class UserController {
         return userService.editUser(patientInfo);
     }
 
+    // Start Postman Data entering from here
+
+    @PostMapping("/saveMedicationData")
+    public String saveData(@RequestBody MedicationRequest medicationRequest) {
+        return userService.saveMedData(medicationRequest);
+    }
+
+    @PostMapping("/editMedicationData")
+    public String editData(@RequestBody MedicationRequest medicationRequest) {
+        return userService.editMedData(medicationRequest);
+    }
+
+    @PostMapping("/saveAllergiesData")
+    public String saveData(@RequestBody AllergiesRequest allergiesRequest) {
+        return userService.saveAllergData(allergiesRequest);
+    }
+
+    @PostMapping("/editAllergiesData")
+    public String editData(@RequestBody AllergiesRequest allergiesRequest) {
+        return userService.editAllergData(allergiesRequest);
+    }
+
+    @PostMapping("/saveInjuryData")
+    public String saveData(@RequestBody InjuryHistoryRequest injuryHistoryRequest) {
+        return userService.saveInjuryData(injuryHistoryRequest);
+    }
+
+    @PostMapping("/editInjuryData")
+    public String editData(@RequestBody InjuryHistoryRequest injuryHistoryRequest) {
+        return userService.editInjuryData(injuryHistoryRequest);
+    }
+
+    @PostMapping("/saveFileData")
+    public String saveData(@RequestBody FileRequest fileRequest) {
+        return userService.saveFileData(fileRequest);
+    }
+
+    @PostMapping("/editFileData")
+    public String editData(@RequestBody FileRequest fileRequest) {
+        return userService.editFileData(fileRequest);
+    }
+
+    // End the Postman Data entering here
 
     @PostMapping("/requestPatientInfo")
     public String requestPatientInfo(@RequestBody DoctorRequest doctorRequest){
@@ -68,6 +111,42 @@ public class UserController {
     public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
         try{
             return userService.getPatientInfo(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping("/medicationData")
+    public ArrayList<MedicationRequest> getMedicationData(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getMedicationData(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping("/allergiesData")
+    public AllergiesRequest getAllergiesData(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getAllergiesData(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping("/injuryData")
+    public InjuryHistoryRequest getInjuryData(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getInjuryData(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping("/fileData")
+    public FileRequest getFileData(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getFileData(patientId);
         } catch(Exception e){
             throw e;
         }

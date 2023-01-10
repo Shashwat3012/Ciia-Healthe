@@ -1,8 +1,8 @@
 package com.example.healthe.entity;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
+@Entity
 @Table(name = "File")
 public class File {
     @Column(name = "extension")
@@ -21,7 +21,7 @@ public class File {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long fileId;
 
-    public File(String extension, String upload_Date, String file_Name, long fileId, String patientId) {
+    public File(String extension, String upload_Date, String file_Name, String patientId) {
         this.extension = extension;
         this.upload_Date = upload_Date;
         this.file_Name = file_Name;
