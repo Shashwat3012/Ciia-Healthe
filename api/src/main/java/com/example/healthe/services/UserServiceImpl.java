@@ -1,19 +1,24 @@
 package com.example.healthe.services;
 
-import com.example.healthe.data.request.*;
 import com.example.healthe.data.request.DoctorRequest;
+import com.example.healthe.data.request.*;
 import com.example.healthe.entity.*;
 import com.example.healthe.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 @Service
-public class UserServiceImpl implements User{
+public class UserServiceImpl implements User {
     @Autowired
     private UserRepository userRepo;
     @Autowired
@@ -35,22 +40,22 @@ public class UserServiceImpl implements User{
     public String registerUser(RegisterUserRequest userRequest) {
         String uuid = UUID.randomUUID().toString().substring(0, 6);
         System.out.println(userRequest.getRole());
-        if(Objects.equals(userRequest.getRole(), "Patient")) {
+        if (Objects.equals(userRequest.getRole(), "Patient")) {
             userRepo.save(new com.example.healthe.entity.User(userRequest.getFirstName(),
                     userRequest.getLastName(), userRequest.getUserName(),
                     userRequest.getPassword(), userRequest.getRole(), uuid));
-        }else{
+        } else {
             doctorUserRepo.save(new DoctorInfo(userRequest.getFirstName(),
                     userRequest.getLastName(), userRequest.getUserName(),
-                    userRequest.getPassword(), userRequest.getRole(), uuid,userRequest.getLicense(),
-                    userRequest.getHospital(),userRequest.getStatus()));
+                    userRequest.getPassword(), userRequest.getRole(), uuid, userRequest.getLicense(),
+                    userRequest.getHospital(), userRequest.getStatus()));
         }
         return uuid;
     }
 
     @Override
     public String loginUser(LoginUserRequest userRequest) {
-        if(Objects.equals(userRequest.getRole(), "Patient")) {
+        if (Objects.equals(userRequest.getRole(), "Patient")) {
             com.example.healthe.entity.User user =
                     userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
             if (user == null) {
@@ -58,118 +63,116 @@ public class UserServiceImpl implements User{
             } else {
                 return user.getUuid();
             }
-        }
-        else if(Objects.equals(userRequest.getRole(), "Nominee")){
+        } else if (Objects.equals(userRequest.getRole(), "Nominee")) {
             PatientInfo pInfo = patientRepo.findByPatientsByNominee(userRequest.getPatientId(),
-                                                                userRequest.getNomineeName());
+                    userRequest.getNomineeName());
             if (pInfo == null) {
                 return "User Not Found!";
             } else {
                 return "Successful Login";
             }
-        } else{
+        } else {
             DoctorInfo pInfo = doctorUserRepo.findByUsernameAndPassword(userRequest.getUserName(),
                     userRequest.getPassword());
             if (pInfo == null) {
                 return "User Not Found!";
             } else {
-                if(Objects.equals(pInfo.getStatus(), "Approved")) {
+                if (Objects.equals(pInfo.getStatus(), "Approved")) {
                     return "Successful Login";
-                }
-                else return "Status Pending";
+                } else return "Status Pending";
             }
         }
     }
 
     @Override
     public String saveUser(PatientInfoRequest patientInfo) {
-        patientRepo.save(new PatientInfo(patientInfo.getPatientName(),patientInfo.getPatientId(),patientInfo.getDOB(),
-                patientInfo.getHeight(),patientInfo.getWeight(),
-                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getNominee1Name(),
-                patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),patientInfo.getNominee2Contact()));
+        patientRepo.save(new PatientInfo(patientInfo.getPatientName(), patientInfo.getPatientId(), patientInfo.getDOB(),
+                patientInfo.getHeight(), patientInfo.getWeight(),
+                patientInfo.getDisease(), patientInfo.getBloodGroup(), patientInfo.getNominee1Name(),
+                patientInfo.getNominee1Contact(), patientInfo.getNominee2Name(), patientInfo.getNominee2Contact()));
         return "Submitted Successfully";
     }
 
     @Override
     public String editUser(PatientInfoRequest patientInfo) {
-        patientRepo.updatePatientInfo(patientInfo.getPatientId(),patientInfo.getHeight(),
+        patientRepo.updatePatientInfo(patientInfo.getPatientId(), patientInfo.getHeight(),
                 patientInfo.getWeight(),
-                patientInfo.getDisease(),patientInfo.getBloodGroup(),
-                patientInfo.getNominee1Name(),patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),
+                patientInfo.getDisease(), patientInfo.getBloodGroup(),
+                patientInfo.getNominee1Name(), patientInfo.getNominee1Contact(), patientInfo.getNominee2Name(),
                 patientInfo.getNominee2Contact());
         return "Submitted Successfully";
     }
 
     @Override
     public String saveMedData(MedicationRequest medicationRequest) {
-        medicationRepo.save(new Medication(medicationRequest.getDisease(),medicationRequest.getMedicine(),
-                medicationRequest.getDoctor(),medicationRequest.getStart_Date(),medicationRequest.getEnd_Date(),
-                medicationRequest.getReports(),medicationRequest.getPatientId()));
+        medicationRepo.save(new Medication(medicationRequest.getDisease(), medicationRequest.getMedicine(),
+                medicationRequest.getDoctor(), medicationRequest.getStart_Date(), medicationRequest.getEnd_Date(),
+                medicationRequest.getReports(), medicationRequest.getPatientId()));
         return "Submitted MedData";
     }
 
     @Override
     public String editMedData(MedicationRequest medicationRequest) {
-        medicationRepo.updateMedInfo(medicationRequest.getDisease(),medicationRequest.getMedicine(),
-                medicationRequest.getDoctor(),medicationRequest.getStart_Date(),medicationRequest.getEnd_Date(),
-                medicationRequest.getReports(),medicationRequest.getPatientId());
+        medicationRepo.updateMedInfo(medicationRequest.getDisease(), medicationRequest.getMedicine(),
+                medicationRequest.getDoctor(), medicationRequest.getStart_Date(), medicationRequest.getEnd_Date(),
+                medicationRequest.getReports(), medicationRequest.getPatientId());
         return "Edited MedData";
     }
 
     @Override
     public String saveAllergData(AllergiesRequest allergiesRequest) {
-        allergiesRepo.save(new Allergies(allergiesRequest.getAllergic_To(),allergiesRequest.getSymptoms(),
-        allergiesRequest.getMedicine(),allergiesRequest.getReports(),allergiesRequest.getPatientId()));
+        allergiesRepo.save(new Allergies(allergiesRequest.getAllergic_To(), allergiesRequest.getSymptoms(),
+                allergiesRequest.getMedicine(), allergiesRequest.getReports(), allergiesRequest.getPatientId()));
         return "Submitted AllergiesData";
     }
 
     @Override
     public String editAllergData(AllergiesRequest allergiesRequest) {
-        allergiesRepo.updateAllergiesInfo(allergiesRequest.getAllergic_To(),allergiesRequest.getSymptoms(),
-                allergiesRequest.getMedicine(),allergiesRequest.getReports(),allergiesRequest.getPatientId());
+        allergiesRepo.updateAllergiesInfo(allergiesRequest.getAllergic_To(), allergiesRequest.getSymptoms(),
+                allergiesRequest.getMedicine(), allergiesRequest.getReports(), allergiesRequest.getPatientId());
         return "Edited AllergiesData";
     }
 
     @Override
     public String saveInjuryData(InjuryHistoryRequest injuryHistoryRequest) {
-        injuryHistoryRepo.save(new InjuryHistory(injuryHistoryRequest.getInjury(),injuryHistoryRequest.getDate(),
+        injuryHistoryRepo.save(new InjuryHistory(injuryHistoryRequest.getInjury(), injuryHistoryRequest.getDate(),
                 injuryHistoryRequest.getReports(), injuryHistoryRequest.getPatientId()));
         return "Submitted InjuryData";
     }
 
     @Override
     public String editInjuryData(InjuryHistoryRequest injuryHistoryRequest) {
-        injuryHistoryRepo.updateInjuryHistoryInfo(injuryHistoryRequest.getInjury(),injuryHistoryRequest.getDate(),
+        injuryHistoryRepo.updateInjuryHistoryInfo(injuryHistoryRequest.getInjury(), injuryHistoryRequest.getDate(),
                 injuryHistoryRequest.getReports(), injuryHistoryRequest.getPatientId());
         return "Edited InjuryData";
     }
 
     @Override
     public String saveFileData(FileRequest fileRequest) {
-        fileRepo.save(new File(fileRequest.getExtension(),fileRequest.getUpload_Date(),
-                fileRequest.getFile_Name(), fileRequest.getPatientId()));
+        fileRepo.save(new File(fileRequest.getExtension(), fileRequest.getUploadDate(),
+                fileRequest.getFileName(), fileRequest.getPatientId()));
         return "Submitted FileData";
     }
 
     @Override
     public String editFileData(FileRequest fileRequest) {
-        fileRepo.updateFileInfo(fileRequest.getExtension(),fileRequest.getUpload_Date(),
-                fileRequest.getFile_Name(), fileRequest.getPatientId());
+        fileRepo.updateFileInfo(fileRequest.getExtension(), fileRequest.getUploadDate(),
+                fileRequest.getFileName(), fileRequest.getPatientId());
         return "Edited FileData";
     }
 
     @Override
-    public String requestData(DoctorRequest doctorRequest){
+    public String requestData(DoctorRequest doctorRequest) {
         String requestId = UUID.randomUUID().toString().substring(0, 6);
-        doctorRepo.save(new com.example.healthe.entity.DoctorRequest(requestId,doctorRequest.getpatientId(),
-                doctorRequest.getReason(),doctorRequest.getDoctorId(),doctorRequest.getDate(),
+        doctorRepo.save(new com.example.healthe.entity.DoctorRequest(requestId, doctorRequest.getpatientId(),
+                doctorRequest.getReason(), doctorRequest.getDoctorId(), doctorRequest.getDate(),
                 doctorRequest.getStatus()));
         return "Status Pending!";
     }
 
     @Override
     public PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException {
-        PatientInfo patientList =  patientRepo.findByPatientId(patientId);
+        PatientInfo patientList = patientRepo.findByPatientId(patientId);
         PatientInfoRequest pRequest = new PatientInfoRequest(
                 patientList.getPatientName(),
                 patientList.getPatientId(),
@@ -190,15 +193,16 @@ public class UserServiceImpl implements User{
     public ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException {
         List<File> fileList = fileRepo.findByPatientId(patientId);
         ArrayList<FileRequest> fileArray = new ArrayList<>();
-        fileList.forEach(file -> {
-                FileRequest fRequest = new FileRequest(
-                        file.getExtension(),
-                        file.getUpload_Date(),
-                        file.getFile_Name(),
-                        file.getpatientId()
-                );
-                fileArray.add(fRequest);
-        });
+//        fileList.forEach(file -> {
+//                FileRequest fRequest = new FileRequest(
+//                        file.getExtension(),
+//                        file.getUpload_Date(),
+//                        file.getFile_Name(),
+//                        file.getpatientId(),
+//                        file.
+//                );
+//                fileArray.add(fRequest);
+//        });
         return fileArray;
     }
 
@@ -207,16 +211,16 @@ public class UserServiceImpl implements User{
         List<Medication> medList = medicationRepo.findByPatientId(patientId);
         ArrayList<MedicationRequest> medArray = new ArrayList<>();
         medList.forEach(med -> {
-                MedicationRequest mRequest = new MedicationRequest(
-                        med.getDisease(),
-                        med.getMedicine(),
-                        med.getDoctor(),
-                        med.getStart_Date(),
-                        med.getEnd_Date(),
-                        med.getReports(),
-                        med.getPatientId()
-                );
-                medArray.add(mRequest);
+            MedicationRequest mRequest = new MedicationRequest(
+                    med.getDisease(),
+                    med.getMedicine(),
+                    med.getDoctor(),
+                    med.getStart_Date(),
+                    med.getEnd_Date(),
+                    med.getReports(),
+                    med.getPatientId()
+            );
+            medArray.add(mRequest);
         });
         return medArray;
     }
@@ -226,50 +230,50 @@ public class UserServiceImpl implements User{
         List<Allergies> allergList = allergiesRepo.findByPatientId(patientId);
         ArrayList<AllergiesRequest> allergArray = new ArrayList<>();
         allergList.forEach(all -> {
-                AllergiesRequest aRequest = new AllergiesRequest(
-                        all.getAllergic_To(),
-                        all.getSymptoms(),
-                        all.getMedicine(),
-                        all.getReports(),
-                        all.getPatientId()
-                );
-                allergArray.add(aRequest);
+            AllergiesRequest aRequest = new AllergiesRequest(
+                    all.getAllergic_To(),
+                    all.getSymptoms(),
+                    all.getMedicine(),
+                    all.getReports(),
+                    all.getPatientId()
+            );
+            allergArray.add(aRequest);
         });
         return allergArray;
     }
 
     @Override
-    public ArrayList<InjuryHistoryRequest> getInjuryData(String patientId) throws InterruptedException{
+    public ArrayList<InjuryHistoryRequest> getInjuryData(String patientId) throws InterruptedException {
         List<InjuryHistory> injuryList = injuryHistoryRepo.findByPatientId(patientId);
         ArrayList<InjuryHistoryRequest> injuryArray = new ArrayList<>();
         injuryList.forEach(injury -> {
-                InjuryHistoryRequest iRequest = new InjuryHistoryRequest(
-                        injury.getInjury(),
-                        injury.getDate(),
-                        injury.getReports(),
-                        injury.getPatientId()
-                );
-                injuryArray.add(iRequest);
+            InjuryHistoryRequest iRequest = new InjuryHistoryRequest(
+                    injury.getInjury(),
+                    injury.getDate(),
+                    injury.getReports(),
+                    injury.getPatientId()
+            );
+            injuryArray.add(iRequest);
         });
         return injuryArray;
     }
 
     @Override
     public List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId) {
-        List<com.example.healthe.entity.DoctorRequest> patientRequests =  doctorRepo.findByPatientId(patientId);
+        List<com.example.healthe.entity.DoctorRequest> patientRequests = doctorRepo.findByPatientId(patientId);
         return patientRequests;
     }
 
     public List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId) {
-        List<com.example.healthe.entity.DoctorRequest> doctorRequests =  doctorRepo.findByDoctorId(doctorId);
+        List<com.example.healthe.entity.DoctorRequest> doctorRequests = doctorRepo.findByDoctorId(doctorId);
         return doctorRequests;
     }
 
     @Override
     public ArrayList<PatientInfoRequest> getPatientInfoByDisease(String disease) {
-        List<PatientInfo> patientList =  patientRepo.findByPatientsByDisease(disease);
+        List<PatientInfo> patientList = patientRepo.findByPatientsByDisease(disease);
         ArrayList<PatientInfoRequest> pList = new ArrayList<>();
-        for(PatientInfo patientObject: patientList) {
+        for (PatientInfo patientObject : patientList) {
             PatientInfoRequest pRequest = new PatientInfoRequest(
                     patientObject.getPatientName(),
                     patientObject.getPatientId(),
@@ -285,12 +289,12 @@ public class UserServiceImpl implements User{
             );
             pList.add(pRequest);
         }
-        return  pList;
+        return pList;
     }
 
     @Override
     public String updateDoctorUser(String doctorId) {
-        doctorUserRepo.updateDoctorStatus("Approved",doctorId);
+        doctorUserRepo.updateDoctorStatus("Approved", doctorId);
         return "Approved";
     }
 
@@ -300,8 +304,57 @@ public class UserServiceImpl implements User{
     }
 
     @Override
+    public String uploadFile(FileRequest uploadedFile) {
+        String result = "";
+        try {
+            result = saveFile(uploadedFile);
+            if (result == "Success") {
+                //save to DB
+                fileRepo.save(new File(
+                                    uploadedFile.getExtension(),
+                                    uploadedFile.getUploadDate(),
+                                    uploadedFile.getFileName(),
+                                    uploadedFile.getPatientId()
+                        ));
+            } else {
+                result = "Error uploading file";
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return result;
+    }
+
+    public String saveFile(FileRequest uploadedFile) {
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        MultipartFile file = uploadedFile.getFile();
+        String fileName = uploadedFile.getFileName();
+        String path = "C:\\Users\\shweta\\Documents\\Shashwat\\Projects\\Ciia-Healthe\\api\\files\\";
+        java.io.File newFile = new java.io.File(path + fileName);
+        try {
+            inputStream = file.getInputStream();
+
+            if (!newFile.exists()) {
+                newFile.createNewFile();
+            }
+            outputStream = new FileOutputStream(newFile);
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = inputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, read);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "Success";
+    }
+
+    @Override
     public String updateRequestStatus(UpdateDoctorRequest docRequest) {
-        doctorRepo.updateStatus(docRequest.getStatus(),docRequest.getRequestId());
+        doctorRepo.updateStatus(docRequest.getStatus(), docRequest.getRequestId());
         return docRequest.getStatus();
     }
 

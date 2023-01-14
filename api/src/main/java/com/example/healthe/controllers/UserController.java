@@ -4,7 +4,9 @@ import com.example.healthe.data.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,6 +150,15 @@ public class UserController {
         try{
             return userService.getFileData(patientId);
         } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @PostMapping("/file")
+    public String uploadFile(FileRequest file){
+        try{
+            return userService.uploadFile(file);
+        }catch(Exception e){
             throw e;
         }
     }

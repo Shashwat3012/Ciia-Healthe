@@ -1,28 +1,35 @@
 package com.example.healthe.data.request;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.web.multipart.MultipartFile;
 
 public class FileRequest {
     private String extension;
-    private String upload_Date;
-    private String file_Name;
+    private String uploadDate;
+    private String fileName;
     private String patientId;
+    private MultipartFile file;
 
-    public FileRequest(String extension, String upload_Date, String file_Name, String patientId) {
+    public FileRequest(String extension, String uploadDate, String fileName, String patientId, MultipartFile file) {
         this.extension = extension;
-        this.upload_Date = upload_Date;
-        this.file_Name = file_Name;
+        this.uploadDate = uploadDate;
+        this.fileName = fileName;
         this.patientId = patientId;
+        this.file = file;
+    }
+
+    public MultipartFile getFile() {
+        return file;
     }
 
     public String getExtension() { return extension; }
 
-    public String getUpload_Date() { return upload_Date; }
+    public String getUploadDate() {
+        return uploadDate;
+    }
 
-    public String getFile_Name() { return file_Name; }
+    public String getFileName() {
+        return fileName;
+    }
 
     public String getPatientId() { return patientId; }
 }

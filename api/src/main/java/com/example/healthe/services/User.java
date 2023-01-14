@@ -2,7 +2,9 @@ package com.example.healthe.services;
 
 import com.example.healthe.data.request.*;
 import com.example.healthe.entity.DoctorInfo;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,4 +57,6 @@ public interface User {
     String updateDoctorUser(String doctorId);
 
     List<DoctorInfo> fetchAllDoctors();
+
+    String uploadFile(FileRequest file);
 }
