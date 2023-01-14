@@ -21,6 +21,8 @@ public class InjuryHistory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    public InjuryHistory(){ }
+
     public InjuryHistory(String injury, String date, String reports, String patientId) {
         this.injury = injury;
         this.date = date;

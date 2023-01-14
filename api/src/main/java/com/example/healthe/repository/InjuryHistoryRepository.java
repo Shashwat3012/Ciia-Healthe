@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface InjuryHistoryRepository extends JpaRepository<InjuryHistory, Long>{
     @Query("Select u from InjuryHistory u WHERE u.patientId=:patientId")
-    InjuryHistory findByPatientId(@Param("patientId") String patientId);
+    List<InjuryHistory> findByPatientId(@Param("patientId") String patientId);
 
     @Transactional
     @Modifying

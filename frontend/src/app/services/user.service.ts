@@ -35,6 +35,26 @@ export class UserService {
         return this.http.post('http://localhost:8080/editMedicationData', user, { ...this.httpOptions, responseType: 'text' })
     }
 
+    saveAdminData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/editMedicationData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    submitAllergiesData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/saveAllergiesData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    editAllergiesData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/editAllergiesData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    submitInjuryData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/saveInjuryData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    editInjuryData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/editInjuryData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
     requestData(request: any): Observable<any> {
         return this.http.post('http://localhost:8080/requestPatientInfo', request, { ...this.httpOptions, responseType: 'text' })
     }
@@ -62,6 +82,16 @@ export class UserService {
     getMedicationData(patientId: string): Observable<any> {
         let queryParams = new HttpParams().append("patientId", patientId);
         return this.http.get('http://localhost:8080/medicationData', { ...this.httpOptions, params: queryParams })
+    }
+
+    getAllergiesData(patientId: string): Observable<any> {
+        let queryParams = new HttpParams().append("patientId", patientId);
+        return this.http.get('http://localhost:8080/allergiesData', { ...this.httpOptions, params: queryParams })
+    }
+
+    getInjuryData(patientId: string): Observable<any> {
+        let queryParams = new HttpParams().append("patientId", patientId);
+        return this.http.get('http://localhost:8080/injuryData', { ...this.httpOptions, params: queryParams })
     }
 
     updateRequestStatus(request: any): Observable<any> {

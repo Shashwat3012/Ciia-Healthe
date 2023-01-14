@@ -21,6 +21,8 @@ public class File {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long fileId;
 
+    public File(){ }
+
     public File(String extension, String upload_Date, String file_Name, String patientId) {
         this.extension = extension;
         this.upload_Date = upload_Date;

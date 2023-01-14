@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface AllergiesRepository extends JpaRepository<Allergies, Long>{
     @Query("Select u from Allergies u WHERE u.patientId=:patientId")
-    Allergies findByPatientId(@Param("patientId") String patientId);
+    List<Allergies> findByPatientId(@Param("patientId") String patientId);
 
     @Transactional
     @Modifying

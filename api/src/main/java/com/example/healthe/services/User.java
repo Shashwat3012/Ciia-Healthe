@@ -3,6 +3,7 @@ package com.example.healthe.services;
 import com.example.healthe.data.request.*;
 import com.example.healthe.entity.DoctorInfo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +28,11 @@ public interface User {
 
     ArrayList<MedicationRequest> getMedicationData(String patientId) throws InterruptedException;
 
-    AllergiesRequest getAllergiesData(String patientId) throws InterruptedException;
+    ArrayList<AllergiesRequest> getAllergiesData(String patientId) throws InterruptedException;
 
-    InjuryHistoryRequest getInjuryData(String patientId) throws InterruptedException;
+    ArrayList<InjuryHistoryRequest> getInjuryData(String patientId) throws InterruptedException;
 
-    FileRequest getFileData(String patientId) throws InterruptedException;
+    ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException;
 
     List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId);
 

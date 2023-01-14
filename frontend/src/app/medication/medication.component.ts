@@ -56,7 +56,6 @@ export class MedicationComponent implements OnInit {
     this.dialog.open(MedicationDataDialogComponent, {
       height: '600px',
       width: '600px',
-      
     });
   }
 
@@ -166,7 +165,6 @@ export class MedicationDataDialogComponent implements OnInit {
     private userService: UserService,
     private _snackbar: MatSnackBar,
   ) {}
-
   
   form: FormGroup = new FormGroup({
     disease: new FormControl(''),

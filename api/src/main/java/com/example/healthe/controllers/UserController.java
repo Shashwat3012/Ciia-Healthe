@@ -126,7 +126,7 @@ public class UserController {
     }
 
     @GetMapping("/allergiesData")
-    public AllergiesRequest getAllergiesData(@RequestParam String patientId) throws InterruptedException {
+    public ArrayList<AllergiesRequest> getAllergiesData(String patientId) throws InterruptedException  {
         try{
             return userService.getAllergiesData(patientId);
         } catch(Exception e){
@@ -135,7 +135,7 @@ public class UserController {
     }
 
     @GetMapping("/injuryData")
-    public InjuryHistoryRequest getInjuryData(@RequestParam String patientId) throws InterruptedException {
+    public ArrayList<InjuryHistoryRequest> getInjuryData(@RequestParam String patientId) throws InterruptedException {
         try{
             return userService.getInjuryData(patientId);
         } catch(Exception e){
@@ -144,7 +144,7 @@ public class UserController {
     }
 
     @GetMapping("/fileData")
-    public FileRequest getFileData(@RequestParam String patientId) throws InterruptedException {
+    public ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException {
         try{
             return userService.getFileData(patientId);
         } catch(Exception e){

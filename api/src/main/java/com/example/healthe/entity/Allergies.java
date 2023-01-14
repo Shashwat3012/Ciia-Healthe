@@ -24,6 +24,8 @@ public class Allergies {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    public Allergies(){ }
+
     public Allergies(String allergic_To, String symptoms, String medicine, String reports, String patientId) {
         this.allergic_To = allergic_To;
         this.symptoms = symptoms;

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface FileRepository extends JpaRepository<File, Long>{
     @Query("Select u from File u WHERE u.patientId=:patientId")
-    File findByPatientId(@Param("patientId") String patientId);
+    List<File> findByPatientId(@Param("patientId") String patientId);
 
     @Transactional
     @Modifying

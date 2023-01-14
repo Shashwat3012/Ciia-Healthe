@@ -1,34 +1,26 @@
 <div>
     <form [formGroup]="form" class="formClass">
         <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
-            <mat-label>Allergic To</mat-label>
+            <mat-label>Injury</mat-label>
             <!-- <input matInput formControlName="allergies"> -->
-            <textarea matInput formControlName="allergic_To"></textarea>
-            <mat-icon matSuffix>masks</mat-icon>
+            <textarea matInput formControlName="injury"></textarea>
+            <mat-icon matSuffix>accessible</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
-            <mat-label>Symptoms</mat-label>
+            <mat-label>Date</mat-label>
             <!-- <input matInput formControlName="diseases"> -->
-            <textarea matInput formControlName="symptoms"></textarea>
-            <mat-icon matSuffix>healing</mat-icon>
+            <input type="date" matInput formControlName="date">
         </mat-form-field>
         <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
-            <mat-label>Medicine</mat-label>
+            <mat-label>File</mat-label>
             <!-- <input matInput formControlName="injuryhistory"> -->
-            <textarea matInput formControlName="medicine"></textarea>
-            <mat-icon matSuffix>local_hospital</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="formFieldClassText" style="width:100%">
-            <mat-label>Reports</mat-label>
-            <!-- <input matInput formControlName="injuryhistory"> -->
-            <textarea matInput formControlName="reports"></textarea>
+            <textarea matInput formControlName="file"></textarea>
             <mat-icon matSuffix> insert_drive_file</mat-icon>
         </mat-form-field>
 
         <div style="display: flex;flex-direction: column;">
             <div style="margin-left: 38%;">
-                <button mat-raised-button class="button" (click)="submit()">Submit</button> &nbsp;&nbsp;
+                <button mat-raised-button class="button" (click)="editInfo()">Submit</button> &nbsp;&nbsp;
                 <button mat-raised-button class="button" (click)="close()">Close</button>
             </div>
         </div>

@@ -187,15 +187,19 @@ public class UserServiceImpl implements User{
     }
 
     @Override
-    public FileRequest getFileData(String patientId) throws InterruptedException {
-        File fileList = fileRepo.findByPatientId(patientId);
-        FileRequest fRequest = new FileRequest(
-                fileList.getExtension(),
-                fileList.getUpload_Date(),
-                fileList.getFile_Name(),
-                fileList.getpatientId()
-        );
-        return fRequest;
+    public ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException {
+        List<File> fileList = fileRepo.findByPatientId(patientId);
+        ArrayList<FileRequest> fileArray = new ArrayList<>();
+        fileList.forEach(file -> {
+                FileRequest fRequest = new FileRequest(
+                        file.getExtension(),
+                        file.getUpload_Date(),
+                        file.getFile_Name(),
+                        file.getpatientId()
+                );
+                fileArray.add(fRequest);
+        });
+        return fileArray;
     }
 
     @Override
@@ -211,35 +215,43 @@ public class UserServiceImpl implements User{
                         med.getEnd_Date(),
                         med.getReports(),
                         med.getPatientId()
-        );
+                );
                 medArray.add(mRequest);
         });
         return medArray;
     }
 
     @Override
-    public AllergiesRequest getAllergiesData(String patientId) throws InterruptedException {
-        Allergies allergList = allergiesRepo.findByPatientId(patientId);
-        AllergiesRequest aRequest = new AllergiesRequest(
-                allergList.getAllergic_To(),
-                allergList.getSymptoms(),
-                allergList.getMedicine(),
-                allergList.getReports(),
-                allergList.getPatientId()
-        );
-        return aRequest;
+    public ArrayList<AllergiesRequest> getAllergiesData(String patientId) throws InterruptedException {
+        List<Allergies> allergList = allergiesRepo.findByPatientId(patientId);
+        ArrayList<AllergiesRequest> allergArray = new ArrayList<>();
+        allergList.forEach(all -> {
+                AllergiesRequest aRequest = new AllergiesRequest(
+                        all.getAllergic_To(),
+                        all.getSymptoms(),
+                        all.getMedicine(),
+                        all.getReports(),
+                        all.getPatientId()
+                );
+                allergArray.add(aRequest);
+        });
+        return allergArray;
     }
 
     @Override
-    public InjuryHistoryRequest getInjuryData(String patientId) throws InterruptedException{
-        InjuryHistory injuryList = injuryHistoryRepo.findByPatientId(patientId);
-        InjuryHistoryRequest iRequest = new InjuryHistoryRequest(
-                injuryList.getInjury(),
-                injuryList.getDate(),
-                injuryList.getReports(),
-                injuryList.getPatientId()
-        );
-        return iRequest;
+    public ArrayList<InjuryHistoryRequest> getInjuryData(String patientId) throws InterruptedException{
+        List<InjuryHistory> injuryList = injuryHistoryRepo.findByPatientId(patientId);
+        ArrayList<InjuryHistoryRequest> injuryArray = new ArrayList<>();
+        injuryList.forEach(injury -> {
+                InjuryHistoryRequest iRequest = new InjuryHistoryRequest(
+                        injury.getInjury(),
+                        injury.getDate(),
+                        injury.getReports(),
+                        injury.getPatientId()
+                );
+                injuryArray.add(iRequest);
+        });
+        return injuryArray;
     }
 
     @Override

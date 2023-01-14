@@ -45,8 +45,8 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MedicationComponent, MedicationDataDialogComponent, viewMedicationDetails } from './medication/medication.component';
-import { AllergiesComponent, AllergiesDataDialogComponent } from './allergies/allergies.component';
-import { InjuryDataDialogComponent, InjuryHistoryComponent } from './injury-history/injury-history.component';
+import { AllergiesComponent, AllergiesDataDialogComponent, viewAllergiesDetails } from './allergies/allergies.component';
+import { InjuryDataDialogComponent, InjuryHistoryComponent, viewInjuryDetails } from './injury-history/injury-history.component';
 import { OtherReportsComponent } from './other-reports/other-reports.component';
 
 const routes: Routes = [
@@ -91,7 +91,9 @@ const routes: Routes = [
     MedicationDataDialogComponent,
     AllergiesDataDialogComponent,
     InjuryDataDialogComponent,
-    viewMedicationDetails
+    viewMedicationDetails,
+    viewAllergiesDetails,
+    viewInjuryDetails
   ],
   imports: [
     BrowserModule,
