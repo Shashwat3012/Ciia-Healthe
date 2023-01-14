@@ -2,9 +2,12 @@ package com.example.healthe.services;
 
 import com.example.healthe.data.request.DoctorRequest;
 import com.example.healthe.data.request.*;
+import com.example.healthe.data.response.FileResponse;
 import com.example.healthe.entity.*;
 import com.example.healthe.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -190,19 +193,23 @@ public class UserServiceImpl implements User {
     }
 
     @Override
-    public ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException {
+    public ArrayList<FileResponse> getFileData(String patientId) throws InterruptedException {
+//        String path = "classpath:";
         List<File> fileList = fileRepo.findByPatientId(patientId);
-        ArrayList<FileRequest> fileArray = new ArrayList<>();
-//        fileList.forEach(file -> {
-//                FileRequest fRequest = new FileRequest(
-//                        file.getExtension(),
-//                        file.getUpload_Date(),
-//                        file.getFile_Name(),
-//                        file.getpatientId(),
-//                        file.
-//                );
-//                fileArray.add(fRequest);
-//        });
+        ArrayList<FileResponse> fileArray = new ArrayList<>();
+        fileList.forEach(file -> {
+           // Resource resource = new ClassPathResource(file.getFile_Name());
+            java.io.File fetchedFile = new java.io.File(file.getFile_Name()).getAbsoluteFile();
+            FileResponse fRequest = new FileResponse(
+                    file.getExtension(),
+                    file.getUpload_Date(),
+                    file.getFile_Name(),
+                    file.getpatientId(),
+                    fetchedFile
+            );
+            fileArray.add(fRequest);
+
+        });
         return fileArray;
     }
 
@@ -330,8 +337,8 @@ public class UserServiceImpl implements User {
         OutputStream outputStream = null;
         MultipartFile file = uploadedFile.getFile();
         String fileName = uploadedFile.getFileName();
-        String path = "C:\\Users\\shweta\\Documents\\Shashwat\\Projects\\Ciia-Healthe\\api\\files\\";
-        java.io.File newFile = new java.io.File(path + fileName);
+//        String path = "classpath:";
+        java.io.File newFile = new java.io.File(fileName);
         try {
             inputStream = file.getInputStream();
 

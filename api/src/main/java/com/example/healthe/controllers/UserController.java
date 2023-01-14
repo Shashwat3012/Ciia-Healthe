@@ -1,6 +1,7 @@
 package com.example.healthe.controllers;
 
 import com.example.healthe.data.request.*;
+import com.example.healthe.data.response.FileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -146,7 +147,7 @@ public class UserController {
     }
 
     @GetMapping("/fileData")
-    public ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException {
+    public ArrayList<FileResponse> getFileData(String patientId) throws InterruptedException {
         try{
             return userService.getFileData(patientId);
         } catch(Exception e){

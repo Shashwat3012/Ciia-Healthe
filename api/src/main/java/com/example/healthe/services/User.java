@@ -1,6 +1,7 @@
 package com.example.healthe.services;
 
 import com.example.healthe.data.request.*;
+import com.example.healthe.data.response.FileResponse;
 import com.example.healthe.entity.DoctorInfo;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,7 +35,7 @@ public interface User {
 
     ArrayList<InjuryHistoryRequest> getInjuryData(String patientId) throws InterruptedException;
 
-    ArrayList<FileRequest> getFileData(String patientId) throws InterruptedException;
+    ArrayList<FileResponse> getFileData(String patientId) throws InterruptedException;
 
     List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId);
 
