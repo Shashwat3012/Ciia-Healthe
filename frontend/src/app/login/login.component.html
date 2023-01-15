@@ -13,44 +13,56 @@
           <mat-label>Username</mat-label>
           <input matInput formControlName="username">
           <mat-icon matSuffix>account_circle</mat-icon>
-        </mat-form-field>
+          <span style="color:red;"*ngIf="username && username.invalid && username.touched "><br>Username Invalid</span>
+
+        </mat-form-field>                  
+
         <mat-form-field appearance="outline"
           *ngIf="form.get('role')!.value == 'Doctor'" class="formFieldClass">
           <mat-label>License</mat-label>
           <input matInput formControlName="license">
           <mat-icon matSuffix>account_circle</mat-icon>
+          <span style="color:red;"*ngIf="license && license.invalid && license.touched">Invalid License Number</span>
         </mat-form-field> &nbsp;
+        <br>
         <mat-form-field appearance="outline"
           *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'" class="formFieldClass">
           <mat-label>Password</mat-label>
           <input type="password" matInput formControlName="password">
           <mat-icon matSuffix>fingerprint</mat-icon>
+          <span style="color:red;"*ngIf="password && password.invalid && password.touched">Password Invalid</span>
         </mat-form-field> &nbsp;
         <mat-form-field appearance="outline" style="margin-top:5%;" *ngIf="form.get('role')!.value == 'Nominee'" 
         class="formFieldClass">
           <mat-label>Patient Id</mat-label>
           <input matInput formControlName="patientId">
           <mat-icon matSuffix>account_circle</mat-icon>
+          <span style="color:red;"*ngIf="patientId && patientId.invalid && patientId.touched">PatientId Invalid</span>
         </mat-form-field>
         <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Nominee'" class="formFieldClass">
           <mat-label>Nominee Name</mat-label>
           <input matInput formControlName="nomineeName">
           <mat-icon matSuffix>account_circle</mat-icon>
-        </mat-form-field> &nbsp;
+          <span style="color:red;"*ngIf="nomineeName && nomineeName.invalid && nomineeName.touched">Nominee Name Invalid</span>
+        </mat-form-field>
         <mat-form-field appearance="outline" style="margin-top:5%;"
-          *ngIf="form.get('role')!.value == 'Admin'" class="formFieldClass">
+          *ngIf="form.get('role')!.value == 'Admin'"class="formFieldClass">
           <mat-label>Username</mat-label>
           <input matInput formControlName="username">
           <mat-icon matSuffix>account_circle</mat-icon>
+          <span style="color:red;"*ngIf="username && username.invalid && username.touched "><br>Username Invalid</span>
         </mat-form-field>
+       
         <mat-form-field appearance="outline"
           *ngIf="form.get('role')!.value == 'Admin'" class="formFieldClass">
           <mat-label>Password</mat-label>
           <input type="password" matInput formControlName="password">
           <mat-icon matSuffix>fingerprint</mat-icon>
+          <span style="color:red;"*ngIf="password && password.invalid && password.touched">Password Invalid</span>
+
         </mat-form-field> &nbsp;
         <div>
-          <button (click)="submit()" mat-button class="button">Login</button>
+          <button (click)="submit()" mat-button class="button" id="prev">Login</button>
           <button (click)="register()" mat-button class="button1">Register</button>
         </div>
       </form>
