@@ -48,6 +48,7 @@ import { MedicationComponent, MedicationDataDialogComponent } from './medication
 import { AllergiesComponent, AllergiesDataDialogComponent } from './allergies/allergies.component';
 import { InjuryDataDialogComponent, InjuryHistoryComponent } from './injury-history/injury-history.component';
 import { OtherReportsComponent } from './other-reports/other-reports.component';
+import { DoctorCompleteInfoComponent } from './doctor-complete-info/doctor-complete-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'allergies', component: AllergiesComponent },
   { path: 'injury-history', component: InjuryHistoryComponent },
   { path: 'other-reports', component: OtherReportsComponent },
+  { path: 'doctor-complete-info', component: DoctorCompleteInfoComponent },
 ];
 
 @NgModule({
@@ -90,7 +92,8 @@ const routes: Routes = [
     OtherReportsComponent,
     MedicationDataDialogComponent,
     AllergiesDataDialogComponent,
-    InjuryDataDialogComponent
+    InjuryDataDialogComponent,
+    DoctorCompleteInfoComponent
   ],
   imports: [
     BrowserModule,

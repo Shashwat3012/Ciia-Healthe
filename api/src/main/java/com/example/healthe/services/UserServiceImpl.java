@@ -69,7 +69,8 @@ public class UserServiceImpl implements User{
                 return "User Not Found!";
             } else {
                 if(Objects.equals(pInfo.getStatus(), "Approved")) {
-                    return "Successful Login";
+//                    return "Successful Login";
+                    return pInfo.getUuid();
                 }
                 else return "Status Pending";
             }
