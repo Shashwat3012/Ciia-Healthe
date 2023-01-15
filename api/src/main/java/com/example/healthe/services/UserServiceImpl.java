@@ -69,7 +69,8 @@ public class UserServiceImpl implements User{
                 return "User Not Found!";
             } else {
                 if(Objects.equals(pInfo.getStatus(), "Approved")) {
-                    return "Successful Login";
+//                    return "Successful Login";
+                    return pInfo.getUuid();
                 }
                 else return "Status Pending";
             }
@@ -127,6 +128,7 @@ public class UserServiceImpl implements User{
     @Override
     public String editUser(PatientInfoRequest patientInfo) {
         patientRepo.updatePatientInfo(patientInfo.getPatientId(),patientInfo.getHeight(),
+
                 patientInfo.getWeight(),
                 patientInfo.getDisease(),patientInfo.getBloodGroup(),
                 patientInfo.getNominee1Name(),patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),

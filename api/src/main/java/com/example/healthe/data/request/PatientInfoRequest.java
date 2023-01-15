@@ -4,8 +4,9 @@ import javax.persistence.Column;
 
 public class PatientInfoRequest {
 
-    private final String patientName;
     private final String patientId;
+
+    private final String patientName;
     private final String dob;
     private final float height;
     private final float weight;

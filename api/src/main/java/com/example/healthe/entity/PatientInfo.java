@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class PatientInfo {
     @Column(name = "patient_name")
     private String patientName;
-    
+
     @Column(name = "patientId")
     private String patientId;
 
@@ -44,7 +44,8 @@ public class PatientInfo {
     private long id;
 
     public PatientInfo(String patientName, String patientId, String DOB, float height, float weight, String disease,
-                       String bloodGroup,  String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact) {
+                       String bloodGroup, String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact) {
+
         this.patientName = patientName;
         this.patientId = patientId;
         this.DOB = DOB;

@@ -1,6 +1,9 @@
 package com.example.healthe.repository;
 
 import com.example.healthe.entity.PatientInfo;
+
+import com.example.healthe.entity.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +21,7 @@ public interface PatientInfoRepository extends JpaRepository<PatientInfo, Long> 
     @Transactional
     @Modifying
     @Query("update PatientInfo u set u.height =:height, u.weight =:weight, " +
+
             "u.disease =:disease, u.bloodGroup =:bloodGroup, " +
             "u.nominee1Name =:nominee1Name, " +
             "u.nominee1Contact =:nominee1Contact, u.nominee2Name =:nominee2Name, " +
@@ -29,11 +33,10 @@ public interface PatientInfoRepository extends JpaRepository<PatientInfo, Long> 
                            @Param(value = "bloodGroup") String bloodGroup,
                            @Param(value = "nominee1Name") String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact);
 
-
     @Query("Select u from PatientInfo u WHERE u.disease=:disease")
-    List<PatientInfo> findByPatientsByDisease(@Param("disease")String disease);
+    List<PatientInfo> findByPatientsByDisease(@Param("disease") String disease);
 
     @Query("Select u from PatientInfo u WHERE u.patientId=:patientId AND (u.nominee1Name =:nomineeName OR u.nominee2Name=:nomineeName)")
-    PatientInfo findByPatientsByNominee(@Param("patientId")String patientId, @Param("nomineeName")String nomineeName);
+    PatientInfo findByPatientsByNominee(@Param("patientId") String patientId, @Param("nomineeName") String nomineeName);
 
 }
