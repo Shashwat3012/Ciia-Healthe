@@ -5,19 +5,29 @@ import javax.persistence.Column;
 public class PatientInfoRequest {
 
     private final String patientName;
+
     private final String patientId;
+
     private final String dob;
+
     private final float height;
+
     private final float weight;
+
     private final String disease;
+
     private final String bloodGroup;
+
+
     private final String nominee1Name;
+
     private final String nominee1Contact;
+
     private final String nominee2Name;
+
     private final String nominee2Contact;
 
-    public PatientInfoRequest(String patientName, String patientId, String dob, float height, float weight, String disease, String bloodGroup,
-                              String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact) {
+    public PatientInfoRequest(String patientName, String patientId, String dob, float height, float weight, String disease, String bloodGroup, String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact) {
         this.patientName = patientName;
         this.patientId = patientId;
         this.dob = dob;

@@ -6,7 +6,11 @@
           <mat-radio-button value="Patient">Patient</mat-radio-button> &nbsp;&nbsp;
           <mat-radio-button value="Doctor">Doctor</mat-radio-button> &nbsp;&nbsp;
           <mat-radio-button value="Nominee">Nominee</mat-radio-button> &nbsp;&nbsp;
+<<<<<<< HEAD
+          <mat-radio-button value="Admin">Admin</mat-radio-button>
+=======
           <mat-radio-button value="Admin">Admin</mat-radio-button> 
+>>>>>>> main
         </mat-radio-group>
         <mat-form-field appearance="outline" style="margin-top:5%;"
           *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'" class="formFieldClass">
@@ -52,6 +56,8 @@
         <div>
           <button (click)="submit()" mat-button class="button">Login</button>
           <button (click)="register()" mat-button class="button1">Register</button>
+          <button (click)="hospital()" mat-button class="button">Hospital</button>
+
         </div>
       </form>
     </mat-card-content>
