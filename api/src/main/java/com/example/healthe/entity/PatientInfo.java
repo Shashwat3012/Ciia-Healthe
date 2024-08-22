@@ -119,6 +119,7 @@ public class PatientInfo {
                 ", weight=" + weight +
                 ", disease='" + disease + '\'' +
                 ", bloodGroup='" + bloodGroup + '\'' +
+
                 ", nominee1Name='" + nominee1Name + '\'' +
                 ", nominee1Contact='" + nominee1Contact + '\'' +
                 ", nominee2Name='" + nominee2Name + '\'' +

@@ -6,10 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import {
-  MatFormFieldModule,
-  MAT_FORM_FIELD_DEFAULT_OPTIONS,
-} from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -39,6 +36,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HospitalComponent, ViewPatientInfoDetails11 } from './hospital/hospital.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -58,6 +56,7 @@ const routes: Routes = [
   { path: 'doctor-dashboard', component: DoctorDashboardComponent },
   { path: 'nominee-dashboard', component: NomineeDashboardComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
+  {path: 'hospital', component: HospitalComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'medication', component: MedicationComponent },
   { path: 'allergies', component: AllergiesComponent },
@@ -81,6 +80,8 @@ const routes: Routes = [
     PatientInfoByDisease,
     NomineeDashboardComponent,
     AdminDashboardComponent,
+    HospitalComponent,
+    ViewPatientInfoDetails11,
     SidenavComponent,
     LayoutComponent,
     ProfileComponent,
